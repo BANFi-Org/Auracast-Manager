@@ -11,6 +11,11 @@
 		965C67992BC3E37900E7D8FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965C67982BC3E37900E7D8FA /* ContentView.swift */; };
 		965C679B2BC3E37A00E7D8FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965C679A2BC3E37A00E7D8FA /* Assets.xcassets */; };
 		965C679E2BC3E37A00E7D8FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965C679D2BC3E37A00E7D8FA /* Preview Assets.xcassets */; };
+		96B418AB2BC4EB74005A2844 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418AA2BC4EB74005A2844 /* MenuItem.swift */; };
+		96B418AD2BC4EB8E005A2844 /* ManagementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418AC2BC4EB8E005A2844 /* ManagementModel.swift */; };
+		96B418B02BC51D9A005A2844 /* BroadcastGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418AF2BC51D9A005A2844 /* BroadcastGroupView.swift */; };
+		96B418B22BC523E6005A2844 /* TransimitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418B12BC523E6005A2844 /* TransimitterView.swift */; };
+		96B418B42BC523F0005A2844 /* ReceiverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418B32BC523F0005A2844 /* ReceiverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		965C67982BC3E37900E7D8FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		965C679A2BC3E37A00E7D8FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		965C679D2BC3E37A00E7D8FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		96B418AA2BC4EB74005A2844 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		96B418AC2BC4EB8E005A2844 /* ManagementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementModel.swift; sourceTree = "<group>"; };
+		96B418AF2BC51D9A005A2844 /* BroadcastGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastGroupView.swift; sourceTree = "<group>"; };
+		96B418B12BC523E6005A2844 /* TransimitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransimitterView.swift; sourceTree = "<group>"; };
+		96B418B32BC523F0005A2844 /* ReceiverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +61,11 @@
 		965C67952BC3E37900E7D8FA /* Auracast Manager */ = {
 			isa = PBXGroup;
 			children = (
+				96B418AE2BC51D6C005A2844 /* View */,
 				965C67962BC3E37900E7D8FA /* Auracast_ManagerApp.swift */,
 				965C67982BC3E37900E7D8FA /* ContentView.swift */,
+				96B418AC2BC4EB8E005A2844 /* ManagementModel.swift */,
+				96B418AA2BC4EB74005A2844 /* MenuItem.swift */,
 				965C679A2BC3E37A00E7D8FA /* Assets.xcassets */,
 				965C679C2BC3E37A00E7D8FA /* Preview Content */,
 			);
@@ -65,6 +78,16 @@
 				965C679D2BC3E37A00E7D8FA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		96B418AE2BC51D6C005A2844 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				96B418AF2BC51D9A005A2844 /* BroadcastGroupView.swift */,
+				96B418B32BC523F0005A2844 /* ReceiverView.swift */,
+				96B418B12BC523E6005A2844 /* TransimitterView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +160,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96B418B22BC523E6005A2844 /* TransimitterView.swift in Sources */,
+				96B418AB2BC4EB74005A2844 /* MenuItem.swift in Sources */,
+				96B418B42BC523F0005A2844 /* ReceiverView.swift in Sources */,
 				965C67992BC3E37900E7D8FA /* ContentView.swift in Sources */,
+				96B418AD2BC4EB8E005A2844 /* ManagementModel.swift in Sources */,
+				96B418B02BC51D9A005A2844 /* BroadcastGroupView.swift in Sources */,
 				965C67972BC3E37900E7D8FA /* Auracast_ManagerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
