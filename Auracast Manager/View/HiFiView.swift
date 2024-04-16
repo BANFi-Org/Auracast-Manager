@@ -1,5 +1,5 @@
 //
-//  TransimitterView.swift
+//  HiFiView.swift
 //  Auracast Manager
 //
 //  Created by Jason on 2024/4/9.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TransimitterView: View {
+struct HiFiView: View {
     
     @Binding var device: Device!
     
@@ -34,24 +34,29 @@ struct TransimitterView: View {
     @State private var isEnableSdcardInput = false
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                if !isConnected {
-                    VStack {
-                        Image(systemName: device.image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 100)
-                        Text(device.name)
-                        Text("connecting...")
-                            .font(.system(size: 12))
-                            .foregroundStyle(.blue)
-                        ProgressView()
-                    }
-                    .scaleEffect(!isConnected ? 1.0 : 0.0)
-                    .animation(.linear, value: isConnected)
-                    
-                } else {
+        if !isConnected {
+            VStack {
+                Image(systemName: device.image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                Text(device.name)
+                Image("bt_logo_holo_12_gray")
+                    .frame(maxHeight: 20)
+                ProgressView()
+            }
+            .scaleEffect(!isConnected ? 1.0 : 0.0)
+            .animation(.linear, value: isConnected)
+            .padding()
+            .onAppear() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    self.isConnected = true
+                }
+            }
+            
+        } else {
+            ScrollView {
+                VStack(alignment: .leading) {
                     HStack {
                         Image(systemName: device.image)
                             .resizable()
@@ -63,9 +68,8 @@ struct TransimitterView: View {
                         
                         Spacer()
                         
-                        Text("Connected")
-                            .font(.system(size: 12))
-                            .foregroundStyle(.blue)
+                        Image("bt_logo_holo_12")
+                            .frame(maxHeight: 20)
                     }
                     .scaleEffect(isConnected ? 1.0 : 0.0)
                     .animation(.easeInOut, value: isConnected)
@@ -152,18 +156,14 @@ struct TransimitterView: View {
                     
                     Spacer()
                 }
+                .padding()
+                
             }
-            .padding()
-            .onAppear() {
+            .onChange(of: device) {
+                reset()
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
                     self.isConnected = true
                 }
-            }
-        }
-        .onChange(of: device) {
-            reset()
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                self.isConnected = true
             }
         }
     }
@@ -184,6 +184,6 @@ struct TransimitterView: View {
     @State var device: Device! = .init(id: UUID(),
                                        name: "BANFi Transimitter",
                                        image: "hifispeaker")
-    return TransimitterView(device: $device)
+    return HiFiView(device: $device)
 }
 

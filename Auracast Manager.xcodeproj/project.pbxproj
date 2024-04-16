@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		963C0F022BC64AB200B685E2 /* DeviceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963C0F012BC64AB200B685E2 /* DeviceProvider.swift */; };
+		963C0F042BC64B4E00B685E2 /* StreamScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963C0F032BC64B4E00B685E2 /* StreamScanner.swift */; };
 		965C67972BC3E37900E7D8FA /* Auracast_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965C67962BC3E37900E7D8FA /* Auracast_ManagerApp.swift */; };
 		965C67992BC3E37900E7D8FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965C67982BC3E37900E7D8FA /* ContentView.swift */; };
 		965C679B2BC3E37A00E7D8FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965C679A2BC3E37A00E7D8FA /* Assets.xcassets */; };
@@ -14,11 +16,13 @@
 		96B418AB2BC4EB74005A2844 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418AA2BC4EB74005A2844 /* MenuItem.swift */; };
 		96B418AD2BC4EB8E005A2844 /* ManagementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418AC2BC4EB8E005A2844 /* ManagementModel.swift */; };
 		96B418B02BC51D9A005A2844 /* BroadcastGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418AF2BC51D9A005A2844 /* BroadcastGroupView.swift */; };
-		96B418B22BC523E6005A2844 /* TransimitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418B12BC523E6005A2844 /* TransimitterView.swift */; };
-		96B418B42BC523F0005A2844 /* ReceiverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418B32BC523F0005A2844 /* ReceiverView.swift */; };
+		96B418B22BC523E6005A2844 /* HiFiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418B12BC523E6005A2844 /* HiFiView.swift */; };
+		96B418B42BC523F0005A2844 /* PodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B418B32BC523F0005A2844 /* PodsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		963C0F012BC64AB200B685E2 /* DeviceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceProvider.swift; sourceTree = "<group>"; };
+		963C0F032BC64B4E00B685E2 /* StreamScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamScanner.swift; sourceTree = "<group>"; };
 		965C67932BC3E37900E7D8FA /* Auracast Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auracast Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		965C67962BC3E37900E7D8FA /* Auracast_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auracast_ManagerApp.swift; sourceTree = "<group>"; };
 		965C67982BC3E37900E7D8FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,8 +31,8 @@
 		96B418AA2BC4EB74005A2844 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		96B418AC2BC4EB8E005A2844 /* ManagementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementModel.swift; sourceTree = "<group>"; };
 		96B418AF2BC51D9A005A2844 /* BroadcastGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BroadcastGroupView.swift; sourceTree = "<group>"; };
-		96B418B12BC523E6005A2844 /* TransimitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransimitterView.swift; sourceTree = "<group>"; };
-		96B418B32BC523F0005A2844 /* ReceiverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverView.swift; sourceTree = "<group>"; };
+		96B418B12BC523E6005A2844 /* HiFiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiFiView.swift; sourceTree = "<group>"; };
+		96B418B32BC523F0005A2844 /* PodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +46,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		963C0F002BC64A9D00B685E2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				963C0F012BC64AB200B685E2 /* DeviceProvider.swift */,
+				96B418AC2BC4EB8E005A2844 /* ManagementModel.swift */,
+				96B418AA2BC4EB74005A2844 /* MenuItem.swift */,
+				963C0F032BC64B4E00B685E2 /* StreamScanner.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		965C678A2BC3E37800E7D8FA = {
 			isa = PBXGroup;
 			children = (
@@ -61,11 +76,10 @@
 		965C67952BC3E37900E7D8FA /* Auracast Manager */ = {
 			isa = PBXGroup;
 			children = (
+				963C0F002BC64A9D00B685E2 /* Model */,
 				96B418AE2BC51D6C005A2844 /* View */,
 				965C67962BC3E37900E7D8FA /* Auracast_ManagerApp.swift */,
 				965C67982BC3E37900E7D8FA /* ContentView.swift */,
-				96B418AC2BC4EB8E005A2844 /* ManagementModel.swift */,
-				96B418AA2BC4EB74005A2844 /* MenuItem.swift */,
 				965C679A2BC3E37A00E7D8FA /* Assets.xcassets */,
 				965C679C2BC3E37A00E7D8FA /* Preview Content */,
 			);
@@ -84,8 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				96B418AF2BC51D9A005A2844 /* BroadcastGroupView.swift */,
-				96B418B32BC523F0005A2844 /* ReceiverView.swift */,
-				96B418B12BC523E6005A2844 /* TransimitterView.swift */,
+				96B418B32BC523F0005A2844 /* PodsView.swift */,
+				96B418B12BC523E6005A2844 /* HiFiView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,9 +174,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96B418B22BC523E6005A2844 /* TransimitterView.swift in Sources */,
+				96B418B22BC523E6005A2844 /* HiFiView.swift in Sources */,
+				963C0F042BC64B4E00B685E2 /* StreamScanner.swift in Sources */,
 				96B418AB2BC4EB74005A2844 /* MenuItem.swift in Sources */,
-				96B418B42BC523F0005A2844 /* ReceiverView.swift in Sources */,
+				963C0F022BC64AB200B685E2 /* DeviceProvider.swift in Sources */,
+				96B418B42BC523F0005A2844 /* PodsView.swift in Sources */,
 				965C67992BC3E37900E7D8FA /* ContentView.swift in Sources */,
 				96B418AD2BC4EB8E005A2844 /* ManagementModel.swift in Sources */,
 				96B418B02BC51D9A005A2844 /* BroadcastGroupView.swift in Sources */,

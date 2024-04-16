@@ -13,6 +13,8 @@ struct ContentView: View {
     
     @ObservedObject private var dataModel = ManagementModel()
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             List(selection: $dataModel.selectedMenuId) {
@@ -56,14 +58,20 @@ struct ContentView: View {
             }
             .listStyle(SidebarListStyle())
             .navigationBarTitleDisplayMode(.automatic)
-            .navigationTitle("Auracast™")
+            .navigationTitle("BANFi")
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Image("auracast")
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
             
         } content: {
             if let selectedMenu = dataModel.getSelectedMenu() {
                 switch selectedMenu.id {
-                case dataModel.broacastGroup.id,
-                    dataModel.transmitterConfig.id,
-                    dataModel.receiverConfig.id:
+                case dataModel.transmitterConfig.id,
+                     dataModel.receiverConfig.id:
                     List(dataModel.discoverdDevices, selection: $dataModel.selectedDevice) { device in
                         NavigationLink(value: device) {
                             HStack {
@@ -118,17 +126,13 @@ struct ContentView: View {
             if let selectedMenuId = dataModel.selectedMenuId,
                dataModel.selectedDevice != nil {
                 switch selectedMenuId {
-                case dataModel.broacastGroup.id:
-                    BroadcastGroupView(device: $dataModel.selectedDevice)
-                
+                    
                 case dataModel.transmitterConfig.id:
-                    TransimitterView(device: $dataModel.selectedDevice)
+                    HiFiView(device: $dataModel.selectedDevice)
                 
                 case dataModel.receiverConfig.id:
-                    ReceiverView(device: $dataModel.selectedDevice)
+                    PodsView(device: $dataModel.selectedDevice)
                     
-//                case dataModel.settings.id:
-
                 default:
                     Text("Constructing...")
                         .font(.footnote)

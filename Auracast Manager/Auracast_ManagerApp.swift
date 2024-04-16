@@ -52,3 +52,12 @@ struct SplashScreen: View {
         }
     }
 }
+
+
+var isPhoneDevice: Bool {
+    return UIDevice.current.userInterfaceIdiom == .phone
+}
+
+var isLandscape: Bool {
+    return UIDevice.current.orientation.isLandscape
+}

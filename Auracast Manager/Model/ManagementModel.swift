@@ -18,9 +18,9 @@ class ManagementModel: ObservableObject {
     
     @Published var discoverdDevices: [Device]
     
-    let broacastGroup     = MenuItem(name: "Broadcast Group", image: "rectangle.3.group")
-    let transmitterConfig = MenuItem(name: "Transmitter",     image: "hifispeaker")
-    let receiverConfig    = MenuItem(name: "Receiver",        image: "airpodsmax")
+    let receiverConfig    = MenuItem(name: "Pods",  image: "airpodsmax")
+    
+    let transmitterConfig = MenuItem(name: "Hi-Fi", image: "hifispeaker")
     
     let settings = MenuItem(name: "Settings", image: "gear")
     
@@ -38,8 +38,7 @@ class ManagementModel: ObservableObject {
             DeviceProvider.shared.stop()
             discoverdDevices.removeAll()
             if let selectedMenuId = selectedMenuId {
-                if selectedMenuId == broacastGroup.id ||
-                    selectedMenuId == transmitterConfig.id ||
+                if selectedMenuId == transmitterConfig.id ||
                     selectedMenuId == receiverConfig.id {
                     DeviceProvider.shared.start()
                 }
@@ -54,7 +53,7 @@ class ManagementModel: ObservableObject {
     }
     
     init() {
-        manageItems = [broacastGroup, transmitterConfig, receiverConfig]
+        manageItems = [receiverConfig, transmitterConfig]
         settingItems = [settings]
         subMenuItems = []
         discoverdDevices = []
@@ -78,67 +77,18 @@ class ManagementModel: ObservableObject {
 // MARK: - Device Provider Delegate
 
 extension ManagementModel: DeviceProviderDelegate {
-    func discover(_ device: Device) {
+    func discover(device: Device) {
         switch selectedMenuId {
-        case broacastGroup.id:
-            discoverdDevices.append(device)
             
         case transmitterConfig.id:
-            guard device.name.hasPrefix("BANFi Transmitter") else { return }
+            guard device.name.hasPrefix("BANFi Hi-Fi") else { return }
             discoverdDevices.append(device)
             
         case receiverConfig.id:
-            guard device.name.hasPrefix("BANFi Receiver") else { return }
+            guard device.name.hasPrefix("BANFi Pods") else { return }
             discoverdDevices.append(device)
             
         default: break
         }
-    }
-}
-
-// MARK: - Device Provider
-
-struct Device: Identifiable, Hashable {
-    var id: UUID
-    var name: String
-    var image: String
-}
-
-fileprivate protocol DeviceProviderDelegate: AnyObject {
-    func discover(_ device: Device)
-}
-
-fileprivate class DeviceProvider {
-    static let shared = DeviceProvider()
-    
-    weak var delegate: DeviceProviderDelegate?
-    
-    var isRunning = false
-    
-    private init() {}
-    
-    func start() {
-        isRunning = true
-        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + .milliseconds(500)) {
-            var index = 1
-            while self.isRunning {
-                if index > 20 {
-                    break
-                }
-                let prefix = [("BANFi Transmitter", "hifispeaker"),
-                              ("BANFi Receiver", "airpodsmax")].randomElement()!
-                let name = "\(prefix.0) \(index)"
-                let image = prefix.1
-                DispatchQueue.main.async {
-                    self.delegate?.discover(Device(id: UUID(), name: name, image: image))
-                }
-                index += 1
-                usleep(600)
-            }
-        }
-    }
-    
-    func stop() {
-        isRunning = false
     }
 }
