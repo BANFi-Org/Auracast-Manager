@@ -122,6 +122,7 @@ struct HiFiView: View {
                             Slider(value: $delayTime, in: 0...1000)
                             Spacer().frame(maxWidth: 12)
                             Text("\(String(format: "%.0f ms", delayTime))")
+                                .frame(minWidth: 80)
                         }
                     }
                     .frame(maxWidth: .infinity)
