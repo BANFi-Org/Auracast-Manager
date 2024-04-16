@@ -33,6 +33,8 @@ struct HiFiView: View {
     
     @State private var isEnableSdcardInput = false
     
+    @State private var delayTime: Float = 0
+    
     var body: some View {
         if !isConnected {
             VStack {
@@ -74,10 +76,11 @@ struct HiFiView: View {
                     .scaleEffect(isConnected ? 1.0 : 0.0)
                     .animation(.easeInOut, value: isConnected)
                     
-                    
-                    Spacer().frame(maxHeight: 20)
-                    
-                    Text("Audio Input").font(.subheadline)
+                    Spacer().frame(minHeight: 22)
+                    HStack {
+                        Text("Audio Input").font(.subheadline)
+                        Spacer()
+                    }.frame(minHeight: 40)
                     VStack {
                         HStack {
                             Image(systemName: "cable.coaxial")
@@ -94,6 +97,11 @@ struct HiFiView: View {
                             Toggle("Airplay", isOn: $isEnableAirplayInput)
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
+                        HStack {
+                            Image(systemName: "poweroutlet.type.e")
+                            Toggle("PoE", isOn: $isEnablePoEInput)
+                        }
+                        .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -102,13 +110,19 @@ struct HiFiView: View {
                             .stroke(Color.secondary, lineWidth: 0.33)
                     }
                     
-                    Spacer().frame(maxHeight: 20)
-                    
-                    Text("PoE Input").font(.subheadline)
+                    Spacer().frame(minHeight: 22)
                     HStack {
-                        Image(systemName: "poweroutlet.type.e")
-                        Toggle(isEnablePoEInput ? "Enable" : "Disable",
-                               isOn: $isEnablePoEInput)
+                        Text("Delay").font(.subheadline)
+                        Spacer()
+                    }.frame(minHeight: 40)
+                    VStack {
+                        HStack {
+                            Image(systemName: "slowmo")
+                            Spacer()
+                            Slider(value: $delayTime, in: 0...1000)
+                            Spacer().frame(maxWidth: 12)
+                            Text("\(String(format: "%.0f ms", delayTime))")
+                        }
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -117,35 +131,39 @@ struct HiFiView: View {
                             .stroke(Color.secondary, lineWidth: 0.33)
                     }
                     
-                    Spacer().frame(maxHeight: 20)
-                    
-                    Text("SD Card").font(.subheadline)
+                    Spacer().frame(minHeight: 22)
+                    HStack {
+                        Text("SD Card").font(.subheadline)
+                        Spacer()
+                    }.frame(minHeight: 40)
                     VStack {
                         HStack {
                             Image(systemName: "sdcard")
-                            Toggle(isEnableSdcardInput ? "Enable" : "Disable",
-                                   isOn: $isEnableSdcardInput)
+                            Toggle("", isOn: $isEnableSdcardInput)
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
-                        HStack {
-                            Text("Path")
-                            Spacer()
-                            Button(action: {
-                                
-                            }) {
-                                Text("SET")
-                                    .font(.system(size: 16, weight: .black))
-                                    .foregroundColor(.white)
-                                    .padding(.init(top: 6, leading: 12, bottom: 6, trailing: 12))
-                                    .background(.blue)
-                                    .clipShape(.rect(cornerRadius: 10))
-                                
+                        VStack {
+                            HStack {
+                                Text("Path")
+                                Spacer()
+                                Button(action: {
+                                    
+                                }) {
+                                    Text("SET")
+                                        .font(.system(size: 16, weight: .black))
+                                        .foregroundColor(.white)
+                                        .padding(.init(top: 6, leading: 12, bottom: 6, trailing: 12))
+                                        .background(isEnableSdcardInput ? .blue : .gray)
+                                        .clipShape(.rect(cornerRadius: 10))
+                                    
+                                }
                             }
+                            TextField("i.e /root", text: $groupNumber)
+                                .textFieldStyle(.roundedBorder)
+                                .keyboardType(.numberPad)
+                                .frame(minHeight: 30)
                         }
-                        TextField("i.e 3", text: $groupNumber)
-                            .textFieldStyle(.roundedBorder)
-                            .keyboardType(.numberPad)
-                            .frame(minHeight: 30)
+                        .disabled(!isEnableSdcardInput)
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -153,8 +171,6 @@ struct HiFiView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .stroke(Color.secondary, lineWidth: 0.33)
                     }
-                    
-                    Spacer()
                 }
                 .padding()
                 
