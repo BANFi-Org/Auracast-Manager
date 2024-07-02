@@ -50,8 +50,6 @@
 			isa = PBXGroup;
 			children = (
 				963C0F012BC64AB200B685E2 /* DeviceProvider.swift */,
-				96B418AC2BC4EB8E005A2844 /* ManagementModel.swift */,
-				96B418AA2BC4EB74005A2844 /* MenuItem.swift */,
 				963C0F032BC64B4E00B685E2 /* StreamScanner.swift */,
 			);
 			path = Model;
@@ -76,8 +74,9 @@
 		965C67952BC3E37900E7D8FA /* Auracast Manager */ = {
 			isa = PBXGroup;
 			children = (
-				963C0F002BC64A9D00B685E2 /* Model */,
-				96B418AE2BC51D6C005A2844 /* View */,
+				96F29CC12C33F6FC0002A22D /* Model */,
+				96F29CC02C33F6E80002A22D /* Setting */,
+				96F29CBF2C33F6DB0002A22D /* Manage */,
 				965C67962BC3E37900E7D8FA /* Auracast_ManagerApp.swift */,
 				965C67982BC3E37900E7D8FA /* ContentView.swift */,
 				965C679A2BC3E37A00E7D8FA /* Assets.xcassets */,
@@ -98,8 +97,49 @@
 			isa = PBXGroup;
 			children = (
 				96B418AF2BC51D9A005A2844 /* BroadcastGroupView.swift */,
-				96B418B32BC523F0005A2844 /* PodsView.swift */,
 				96B418B12BC523E6005A2844 /* HiFiView.swift */,
+				96B418B32BC523F0005A2844 /* PodsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		96F29CBF2C33F6DB0002A22D /* Manage */ = {
+			isa = PBXGroup;
+			children = (
+				963C0F002BC64A9D00B685E2 /* Model */,
+				96B418AE2BC51D6C005A2844 /* View */,
+			);
+			path = Manage;
+			sourceTree = "<group>";
+		};
+		96F29CC02C33F6E80002A22D /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				96F29CC22C33F73D0002A22D /* Model */,
+				96F29CC32C33F74B0002A22D /* View */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		96F29CC12C33F6FC0002A22D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				96B418AC2BC4EB8E005A2844 /* ManagementModel.swift */,
+				96B418AA2BC4EB74005A2844 /* MenuItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		96F29CC22C33F73D0002A22D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		96F29CC32C33F74B0002A22D /* View */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
