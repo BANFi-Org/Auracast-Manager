@@ -95,16 +95,42 @@ struct ContentView: View {
                     }
                     
                 case dataModel.settings.id:
-                    List(dataModel.settingsMenuItems) { item in
-                        NavigationLink(value: item) {
-                            HStack {
-                                Image(systemName: item.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 23, height: 23)
-                                Text(item.name)
+                    List(selection: $dataModel.selectedSettingMenuId) {
+                        Section {
+                            ForEach(dataModel.functionsMenuItems, id: \.id) { item in
+                                NavigationLink(value: item) {
+                                    HStack {
+                                        Image(systemName: item.image)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 23, height: 23)
+                                        Text(item.name)
+                                    }
+                                    .padding(.init(top: 8, leading: 20, bottom: 8, trailing: 0))
+                                }
                             }
-                            .padding(.init(top: 8, leading: 20, bottom: 8, trailing: 0))
+                        } header: {
+                            Text("Function")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                        }
+                        Section {
+                            ForEach(dataModel.banfiMenuItems, id: \.id) { item in
+                                NavigationLink(value: item) {
+                                    HStack {
+                                        Image(systemName: item.image)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 23, height: 23)
+                                        Text(item.name)
+                                    }
+                                    .padding(.init(top: 8, leading: 20, bottom: 8, trailing: 0))
+                                }
+                            }
+                        } header: {
+                            Text("About")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
                         }
                     }
                     .listStyle(.plain)
@@ -123,25 +149,81 @@ struct ContentView: View {
             }
             
         } detail: {
-            if let selectedMenuId = dataModel.selectedMenuId,
-               dataModel.selectedDevice != nil {
+            if let selectedMenuId = dataModel.selectedMenuId {
                 switch selectedMenuId {
-                    
                 case dataModel.transmitterConfig.id:
-                    HiFiView(device: $dataModel.selectedDevice)
-                
+                    if dataModel.selectedDevice != nil {
+                        HiFiView(device: $dataModel.selectedDevice)
+                    } else {
+                        Text("Please select an item")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                    
                 case dataModel.receiverConfig.id:
-                    PodsView(device: $dataModel.selectedDevice)
+                    if dataModel.selectedDevice != nil {
+                        PodsView(device: $dataModel.selectedDevice)
+                    } else {
+                        Text("Please select an item")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                    
+                case dataModel.settings.id:
+                    var idx1 = dataModel.functionsMenuItems.firstIndex(where: {dataModel.selectedSettingMenuId == $0.id})
+                    if let idx = idx1 {
+                        switch idx {
+                        case 0:
+                            Text("Preference Constructing...")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                            
+                        case 1:
+                            Text("Magic Lab Constructing...")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                            
+                        case 2:
+                            Text("Share Constructing...")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                            
+                        case 3:
+                            Text("About Constructing...")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                            
+                        default:
+                            Text("Unknown Constructing...")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    var idx2 = dataModel.banfiMenuItems.firstIndex(where: {dataModel.selectedSettingMenuId == $0.id})
+                    if let idx = idx2 {
+                        switch idx {
+                        case 0:
+                            Text("Partner Constructing...")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                            
+                        case 1:
+                            Text("Service Constructing...")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                            
+                        default:
+                            Text("Unknown Constructing...")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                     
                 default:
                     Text("Constructing...")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
-            } else {
-                Text("Please select an item")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
             }
         }
         

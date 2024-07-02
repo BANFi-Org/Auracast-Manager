@@ -24,10 +24,12 @@ class ManagementModel: ObservableObject {
     
     let settings = MenuItem(name: "Settings", image: "gear")
     
-    let settingsMenuItems = [MenuItem(name: "Preference", image: "checklist"),
-                             MenuItem(name: "Magic Lab",  image: "lasso.badge.sparkles"),
-                             MenuItem(name: "Share",      image: "square.and.arrow.up"),
-                             MenuItem(name: "About",      image: "exclamationmark.circle")]
+    let functionsMenuItems = [MenuItem(name: "Preference",       image: "checklist"),
+                             MenuItem(name: "Magic Lab",        image: "lasso.badge.sparkles"),
+                             MenuItem(name: "Share",            image: "square.and.arrow.up")]
+    
+    let banfiMenuItems = [MenuItem(name: "BANFi & Partners", image: "exclamationmark.circle"),
+                          MenuItem(name: "Free & Premium Services", image: "dollarsign.circle")]
     
     @Published var selectedMenuId: MenuItem.ID? {
         didSet {
@@ -42,6 +44,14 @@ class ManagementModel: ObservableObject {
                     selectedMenuId == receiverConfig.id {
                     DeviceProvider.shared.start()
                 }
+            }
+        }
+    }
+    
+    @Published var selectedSettingMenuId: MenuItem.ID? {
+        didSet {
+            guard selectedSettingMenuId != oldValue else {
+                return
             }
         }
     }
