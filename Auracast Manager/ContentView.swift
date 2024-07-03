@@ -64,17 +64,6 @@ struct ContentView: View {
                         .scaledToFit()
                 }
             }
-            .navigationDestination(for: MenuItem.self) { item in
-                if item.id == dataModel.transmitterConfig.id {
-                    HiFiMenuView(dataModel: dataModel)
-                } else if item.id == dataModel.receiverConfig.id {
-                    PodsMenuView(dataModel: dataModel)
-                } else if item.id == dataModel.settings.id {
-                    SettingMenuView(dataModel: dataModel)
-                } else {
-                    Text("Unknown Menu Item")
-                }
-            }
             
         } content: {
             if let selectedMenu = dataModel.getSelectedMenu() {
