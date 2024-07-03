@@ -26,7 +26,7 @@ struct HiFiMenuView: View {
             }
         }
         .listStyle(.plain)
-        .navigationTitle("Hi-Fi")
+        .navigationTitle("Transmitter")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 if dataModel.isScanning {

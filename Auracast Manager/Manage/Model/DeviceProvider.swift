@@ -37,7 +37,7 @@ class DeviceProvider {
                     if count > 19 {
                         break
                     }
-                    let prefix = [("BANFi Hi-Fi", "hifispeaker"),
+                    let prefix = [("BANFi Transmitter", "hifireceiver"),
                                   ("BANFi Pods", "airpodsmax")].randomElement()!
                     let name = "\(prefix.0) \(count+1)"
                     let image = prefix.1

@@ -68,12 +68,12 @@ struct ContentView: View {
         } content: {
             if let selectedMenu = dataModel.getSelectedMenu() {
                 switch selectedMenu.id {
-                case dataModel.transmitterConfig.id:
-                    PodsMenuView(dataModel: dataModel)
-                                        
                 case dataModel.receiverConfig.id:
-                    HiFiMenuView(dataModel: dataModel)
+                    PodsMenuView(dataModel: dataModel)
                     
+                case dataModel.transmitterConfig.id:
+                    HiFiMenuView(dataModel: dataModel)
+                                        
                 case dataModel.settings.id:
                     SettingMenuView(dataModel: dataModel)
                     

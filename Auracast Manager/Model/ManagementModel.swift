@@ -18,9 +18,9 @@ class ManagementModel: ObservableObject {
     
     @Published var discoverdDevices: [Device]
     
-    let receiverConfig    = MenuItem(name: "Pods",  image: "airpodsmax")
+    let receiverConfig = MenuItem(name: "Pods",  image: "airpodsmax")
     
-    let transmitterConfig = MenuItem(name: "Hi-Fi", image: "hifispeaker")
+    let transmitterConfig = MenuItem(name: "Transimtter", image: "hifireceiver")
     
     let settings = MenuItem(name: "Settings", image: "gear")
     
@@ -91,7 +91,7 @@ extension ManagementModel: DeviceProviderDelegate {
         switch selectedMenuId {
             
         case transmitterConfig.id:
-            guard device.name.hasPrefix("BANFi Hi-Fi") else { return }
+            guard device.name.hasPrefix("BANFi Transmitter") else { return }
             discoverdDevices.append(device)
             
         case receiverConfig.id:
