@@ -24,13 +24,6 @@ class ManagementModel: ObservableObject {
     
     let settings = MenuItem(name: "Settings", image: "gear")
     
-    let functionsMenuItems = [MenuItem(name: "Preference",       image: "checklist"),
-                             MenuItem(name: "Magic Lab",        image: "lasso.badge.sparkles"),
-                             MenuItem(name: "Share",            image: "square.and.arrow.up")]
-    
-    let banfiMenuItems = [MenuItem(name: "BANFi & Partners", image: "exclamationmark.circle"),
-                          MenuItem(name: "Free & Premium Services", image: "dollarsign.circle")]
-    
     @Published var selectedMenuId: MenuItem.ID? {
         didSet {
             guard selectedMenuId != oldValue else {
@@ -48,9 +41,16 @@ class ManagementModel: ObservableObject {
         }
     }
     
-    @Published var selectedSettingMenuId: MenuItem.ID? {
+    let functionsMenuItems = [MenuItem(name: "Preference", image: "checklist"),
+                              MenuItem(name: "Magic Lab",  image: "lasso.badge.sparkles"),
+                              MenuItem(name: "Share",      image: "square.and.arrow.up")]
+    
+    let banfiMenuItems = [MenuItem(name: "BANFi & Partners",        image: "exclamationmark.circle"),
+                          MenuItem(name: "Free & Premium Services", image: "dollarsign.circle")]
+    
+    @Published var selectedSettingId: MenuItem.ID? {
         didSet {
-            guard selectedSettingMenuId != oldValue else {
+            guard selectedSettingId != oldValue else {
                 return
             }
         }

@@ -24,6 +24,9 @@
 		96F29CCC2C3421970002A22D /* ProjectBaseServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CCB2C3421970002A22D /* ProjectBaseServiceView.swift */; };
 		96F29CCE2C34247E0002A22D /* PremiumServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CCD2C34247E0002A22D /* PremiumServiceView.swift */; };
 		96F29CD02C345DEF0002A22D /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CCF2C345DEF0002A22D /* KeyboardResponder.swift */; };
+		96F29CD22C34E62E0002A22D /* PodsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CD12C34E62E0002A22D /* PodsMenuView.swift */; };
+		96F29CD42C34E6390002A22D /* HiFiMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CD32C34E6390002A22D /* HiFiMenuView.swift */; };
+		96F29CD62C34E6480002A22D /* SettingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CD52C34E6480002A22D /* SettingMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		96F29CCB2C3421970002A22D /* ProjectBaseServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBaseServiceView.swift; sourceTree = "<group>"; };
 		96F29CCD2C34247E0002A22D /* PremiumServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumServiceView.swift; sourceTree = "<group>"; };
 		96F29CCF2C345DEF0002A22D /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		96F29CD12C34E62E0002A22D /* PodsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodsMenuView.swift; sourceTree = "<group>"; };
+		96F29CD32C34E6390002A22D /* HiFiMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiFiMenuView.swift; sourceTree = "<group>"; };
+		96F29CD52C34E6480002A22D /* SettingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,8 @@
 			children = (
 				963C0F002BC64A9D00B685E2 /* Model */,
 				96B418AE2BC51D6C005A2844 /* View */,
+				96F29CD12C34E62E0002A22D /* PodsMenuView.swift */,
+				96F29CD32C34E6390002A22D /* HiFiMenuView.swift */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 			children = (
 				96F29CC22C33F73D0002A22D /* Model */,
 				96F29CC32C33F74B0002A22D /* View */,
+				96F29CD52C34E6480002A22D /* SettingMenuView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -240,9 +249,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96F29CD42C34E6390002A22D /* HiFiMenuView.swift in Sources */,
 				96F29CC72C3403480002A22D /* BanfiFreePremiumServiceView.swift in Sources */,
 				96B418B22BC523E6005A2844 /* HiFiView.swift in Sources */,
 				96F29CCE2C34247E0002A22D /* PremiumServiceView.swift in Sources */,
+				96F29CD22C34E62E0002A22D /* PodsMenuView.swift in Sources */,
 				963C0F042BC64B4E00B685E2 /* StreamScanner.swift in Sources */,
 				96B418AB2BC4EB74005A2844 /* MenuItem.swift in Sources */,
 				963C0F022BC64AB200B685E2 /* DeviceProvider.swift in Sources */,
@@ -254,6 +265,7 @@
 				96B418B02BC51D9A005A2844 /* BroadcastGroupView.swift in Sources */,
 				96F29CCA2C34214E0002A22D /* FreeServiceView.swift in Sources */,
 				96F29CCC2C3421970002A22D /* ProjectBaseServiceView.swift in Sources */,
+				96F29CD62C34E6480002A22D /* SettingMenuView.swift in Sources */,
 				965C67972BC3E37900E7D8FA /* Auracast_ManagerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

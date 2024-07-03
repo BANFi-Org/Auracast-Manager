@@ -65,86 +65,34 @@ struct ContentView: View {
                 }
             }
             .navigationDestination(for: MenuItem.self) { item in
-                
+                if item.id == dataModel.transmitterConfig.id {
+                    HiFiMenuView(dataModel: dataModel)
+                } else if item.id == dataModel.receiverConfig.id {
+                    PodsMenuView(dataModel: dataModel)
+                } else if item.id == dataModel.settings.id {
+                    SettingMenuView(dataModel: dataModel)
+                } else {
+                    Text("Unknown Menu Item")
+                }
             }
             
         } content: {
             if let selectedMenu = dataModel.getSelectedMenu() {
                 switch selectedMenu.id {
-                case dataModel.transmitterConfig.id,
-                     dataModel.receiverConfig.id:
-                    List(dataModel.discoverdDevices, selection: $dataModel.selectedDevice) { device in
-                        NavigationLink(value: device) {
-                            HStack {
-                                Image(systemName: device.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 30, height: 30)
-                                Text(device.name)
-                                    .font(.system(size: 15))
-                            }
-                            .padding(.init(top: 3, leading: 20, bottom: 3, trailing: 0))
-                        }
-                    }
-                    .listStyle(.plain)
-                    .navigationTitle(selectedMenu.name)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            if dataModel.isScanning {
-                                ProgressView()
-                            }
-                        }
-                    }
+                case dataModel.transmitterConfig.id:
+                    PodsMenuView(dataModel: dataModel)
+                                        
+                case dataModel.receiverConfig.id:
+                    HiFiMenuView(dataModel: dataModel)
                     
                 case dataModel.settings.id:
-                    List(selection: $dataModel.selectedSettingMenuId) {
-                        Section {
-                            ForEach(dataModel.functionsMenuItems, id: \.id) { item in
-                                NavigationLink(value: item) {
-                                    HStack {
-                                        Image(systemName: item.image)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 23, height: 23)
-                                        Text(item.name)
-                                            .font(.system(size: 15))
-                                    }
-                                    .padding(.init(top: 3, leading: 20, bottom: 3, trailing: 0))
-                                }
-                            }
-                        } header: {
-                            Text("Function")
-                                .font(.system(size: 12))
-                                .foregroundStyle(.secondary)
-                        }
-                        Section {
-                            ForEach(dataModel.banfiMenuItems, id: \.id) { item in
-                                NavigationLink(value: item) {
-                                    HStack {
-                                        Image(systemName: item.image)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 23, height: 23)
-                                        Text(item.name)
-                                            .font(.system(size: 15))
-                                    }
-                                    .padding(.init(top: 3, leading: 20, bottom: 3, trailing: 0))
-                                }
-                            }
-                        } header: {
-                            Text("About")
-                                .font(.system(size: 12))
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    .listStyle(.plain)
-                    .navigationTitle(selectedMenu.name)
+                    SettingMenuView(dataModel: dataModel)
                     
                 default:
-                    Text("Constructing...")
+                    
+                    Text("Unknown Constructing...")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
-                        .navigationTitle(selectedMenu.name)
                 }
             } else {
                 Text("Please select a menu item")
@@ -174,7 +122,7 @@ struct ContentView: View {
                     }
                     
                 case dataModel.settings.id:
-                    let idx1 = dataModel.functionsMenuItems.firstIndex(where: {dataModel.selectedSettingMenuId == $0.id})
+                    let idx1 = dataModel.functionsMenuItems.firstIndex(where: {dataModel.selectedSettingId == $0.id})
                     if let idx = idx1 {
                         switch idx {
                         case 0:
@@ -203,7 +151,7 @@ struct ContentView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
-                    let idx2 = dataModel.banfiMenuItems.firstIndex(where: {dataModel.selectedSettingMenuId == $0.id})
+                    let idx2 = dataModel.banfiMenuItems.firstIndex(where: {dataModel.selectedSettingId == $0.id})
                     if let idx = idx2 {
                         switch idx {
                         case 0:
