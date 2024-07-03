@@ -26,8 +26,7 @@ struct ContentView: View {
                                 .scaledToFit()
                                 .frame(width: 30, height: 30)
                             Text(item.name)
-                                .font(.system(.title3, design: .rounded))
-                                .bold()
+                                .font(.system(size: 17, weight: .bold))
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
                     }
@@ -45,8 +44,7 @@ struct ContentView: View {
                                 .scaledToFit()
                                 .frame(width: 30, height: 30)
                             Text(item.name)
-                                .font(.system(.title3, design: .rounded))
-                                .bold()
+                                .font(.system(size: 17, weight: .bold))
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
                     }
@@ -66,6 +64,9 @@ struct ContentView: View {
                         .scaledToFit()
                 }
             }
+            .navigationDestination(for: MenuItem.self) { item in
+                
+            }
             
         } content: {
             if let selectedMenu = dataModel.getSelectedMenu() {
@@ -80,8 +81,9 @@ struct ContentView: View {
                                     .scaledToFit()
                                     .frame(width: 30, height: 30)
                                 Text(device.name)
+                                    .font(.system(size: 15))
                             }
-                            .padding(.init(top: 8, leading: 20, bottom: 8, trailing: 0))
+                            .padding(.init(top: 3, leading: 20, bottom: 3, trailing: 0))
                         }
                     }
                     .listStyle(.plain)
@@ -105,8 +107,9 @@ struct ContentView: View {
                                             .scaledToFit()
                                             .frame(width: 23, height: 23)
                                         Text(item.name)
+                                            .font(.system(size: 15))
                                     }
-                                    .padding(.init(top: 8, leading: 20, bottom: 8, trailing: 0))
+                                    .padding(.init(top: 3, leading: 20, bottom: 3, trailing: 0))
                                 }
                             }
                         } header: {
@@ -123,8 +126,9 @@ struct ContentView: View {
                                             .scaledToFit()
                                             .frame(width: 23, height: 23)
                                         Text(item.name)
+                                            .font(.system(size: 15))
                                     }
-                                    .padding(.init(top: 8, leading: 20, bottom: 8, trailing: 0))
+                                    .padding(.init(top: 3, leading: 20, bottom: 3, trailing: 0))
                                 }
                             }
                         } header: {
@@ -170,7 +174,7 @@ struct ContentView: View {
                     }
                     
                 case dataModel.settings.id:
-                    var idx1 = dataModel.functionsMenuItems.firstIndex(where: {dataModel.selectedSettingMenuId == $0.id})
+                    let idx1 = dataModel.functionsMenuItems.firstIndex(where: {dataModel.selectedSettingMenuId == $0.id})
                     if let idx = idx1 {
                         switch idx {
                         case 0:
@@ -199,18 +203,14 @@ struct ContentView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
-                    var idx2 = dataModel.banfiMenuItems.firstIndex(where: {dataModel.selectedSettingMenuId == $0.id})
+                    let idx2 = dataModel.banfiMenuItems.firstIndex(where: {dataModel.selectedSettingMenuId == $0.id})
                     if let idx = idx2 {
                         switch idx {
                         case 0:
-                            Text("Partner Constructing...")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
+                            BanfiPartnersView()
                             
                         case 1:
-                            Text("Service Constructing...")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
+                            BanfiFreePremiumServiceView()
                             
                         default:
                             Text("Unknown Constructing...")
@@ -226,7 +226,6 @@ struct ContentView: View {
                 }
             }
         }
-        
     }
 }
 
