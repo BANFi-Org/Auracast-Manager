@@ -3,6 +3,16 @@
     {
       "filename" : "auracast.png",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "auracast_dark.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
