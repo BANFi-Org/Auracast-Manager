@@ -97,7 +97,9 @@ struct PodsView: View {
                                 streamScanner.start()
                             }) {
                                 Text(stream.name)
+                                    .font(.system(size: 14))
                                 Image(systemName: "waveform.slash")
+                                    .font(.system(size: 14))
                             }.padding(.init(top: 0, leading: 0, bottom: 0, trailing: 12))
                         }
                     }.frame(minHeight: 40)
@@ -105,12 +107,15 @@ struct PodsView: View {
                         ForEach(streamScanner.discoveredStreams, id: \.self) { stream in
                             HStack {
                                 Text(stream.name)
+                                    .font(.system(size: 14))
                                 Spacer()
                                 if jointStream && selectedStream?.id == stream.id {
                                     Image(systemName: "waveform")
+                                        .font(.system(size: 14))
                                 }
                                 if stream.secure {
                                     Image(systemName: "lock.fill")
+                                        .font(.system(size: 14))
                                 }
                             }
                             .listRowBackground(
@@ -151,6 +156,7 @@ struct PodsView: View {
                     },
                            message: { stream in
                         Text(stream.name)
+                            .font(.system(size: 14))
                     })
                     
                     Spacer().frame(minHeight: 22)
@@ -159,6 +165,7 @@ struct PodsView: View {
                         Spacer()
                         Button(action: {}) {
                             Image(systemName: "speaker.slash")
+                                .font(.system(size: 14))
                                 .padding(.init(top: 0, leading: 0, bottom: 0, trailing: 12))
                         }
                     }.frame(minHeight: 40)
@@ -167,12 +174,12 @@ struct PodsView: View {
                             HStack {
                                 Image(systemName: "airpodpro.left")
                                 Text("L")
-                                    .font(.system(size: 15, weight: .black))
+                                    .font(.system(size: 14, weight: .black))
                             }
                             HStack {
                                 Image(systemName: "airpodpro.right")
                                 Text("R")
-                                    .font(.system(size: 15, weight: .black))
+                                    .font(.system(size: 14, weight: .black))
                             }
                         }
                         Spacer().frame(maxWidth: 12)
@@ -183,7 +190,9 @@ struct PodsView: View {
                         Spacer().frame(maxWidth: 12)
                         VStack {
                             Text("\(String(format: "%.0f", leftVolumePercent))%")
+                                .font(.system(size: 14))
                             Text("\(String(format: "%.0f", rightVolumePercent))%")
+                                .font(.system(size: 14))
                         }
                         .frame(maxWidth: 60)
                     }
@@ -201,18 +210,21 @@ struct PodsView: View {
                     }.frame(minHeight: 40)
                     HStack {
                         Image(systemName: "airpodpro.left")
+                            .font(.system(size: 14))
                         Text("L")
-                            .font(.system(size: 15, weight: .black))
+                            .font(.system(size: 14, weight: .black))
                         Spacer().frame(maxWidth: 12)
                         VStack {
                             Text("\(String(format: "%.0f", balancePercent))%")
+                                .font(.system(size: 14))
                             Slider(value: $balancePercent, in: -50...50)
                                 .tint(.gray.opacity(0.3))
                         }
                         Spacer().frame(maxWidth: 12)
                         Text("R")
-                            .font(.system(size: 15, weight: .black))
+                            .font(.system(size: 14, weight: .black))
                         Image(systemName: "airpodpro.right")
+                            .font(.system(size: 14))
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -229,15 +241,17 @@ struct PodsView: View {
                     VStack {
                         Toggle(isEnableMultipleSub ? "Enable" : "Disable",
                                isOn: $isEnableMultipleSub)
+                        .font(.system(size: 14))
                         Spacer().frame(maxHeight: 20)
                         HStack {
                             Text("Max Subscription Count")
+                                .font(.system(size: 14))
                             Spacer()
                             Button(action: {
                                 
                             }) {
                                 Text("SET")
-                                    .font(.system(size: 16, weight: .black))
+                                    .font(.system(size: 14, weight: .black))
                                     .foregroundColor(.white)
                                     .padding(.init(top: 6, leading: 12, bottom: 6, trailing: 12))
                                     .background(.blue)
@@ -246,6 +260,7 @@ struct PodsView: View {
                             }
                         }
                         TextField("i.e 3", text: $groupNumber)
+                            .font(.system(size: 14))
                             .textFieldStyle(.roundedBorder)
                             .keyboardType(.numberPad)
                             .frame(minHeight: 30)

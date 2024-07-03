@@ -84,22 +84,30 @@ struct HiFiView: View {
                     VStack {
                         HStack {
                             Image(systemName: "cable.coaxial")
+                                .font(.system(size: 14))
                             Toggle("RSA", isOn: $isEnableRsaInput)
+                                .font(.system(size: 14))
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
                         HStack {
                             Image(systemName: "fibrechannel")
+                                .font(.system(size: 14))
                             Toggle("Digital", isOn: $isEnableDigitalInput)
+                                .font(.system(size: 14))
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
                         HStack {
                             Image(systemName: "airplayaudio")
+                                .font(.system(size: 14))
                             Toggle("Airplay", isOn: $isEnableAirplayInput)
+                                .font(.system(size: 14))
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
                         HStack {
                             Image(systemName: "poweroutlet.type.e")
+                                .font(.system(size: 14))
                             Toggle("PoE", isOn: $isEnablePoEInput)
+                                .font(.system(size: 14))
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
                     }
@@ -118,11 +126,13 @@ struct HiFiView: View {
                     VStack {
                         HStack {
                             Image(systemName: "slowmo")
+                                .font(.system(size: 14))
                             Spacer()
                             Slider(value: $delayTime, in: 0...1000)
                             Spacer().frame(maxWidth: 12)
                             Text("\(String(format: "%.0f ms", delayTime))")
                                 .frame(minWidth: 80)
+                                .font(.system(size: 14))
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -140,18 +150,21 @@ struct HiFiView: View {
                     VStack {
                         HStack {
                             Image(systemName: "sdcard")
+                                .font(.system(size: 14))
                             Toggle("", isOn: $isEnableSdcardInput)
+                                .font(.system(size: 14))
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
                         VStack {
                             HStack {
                                 Text("Path")
+                                    .font(.system(size: 14))
                                 Spacer()
                                 Button(action: {
                                     
                                 }) {
                                     Text("SET")
-                                        .font(.system(size: 16, weight: .black))
+                                        .font(.system(size: 14, weight: .black))
                                         .foregroundColor(.white)
                                         .padding(.init(top: 6, leading: 12, bottom: 6, trailing: 12))
                                         .background(isEnableSdcardInput ? .blue : .gray)
@@ -160,6 +173,7 @@ struct HiFiView: View {
                                 }
                             }
                             TextField("i.e /root", text: $groupNumber)
+                                .font(.system(size: 14))
                                 .textFieldStyle(.roundedBorder)
                                 .keyboardType(.numberPad)
                                 .frame(minHeight: 30)
