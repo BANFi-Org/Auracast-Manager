@@ -10,77 +10,97 @@ import SwiftUI
 
 class ManagementModel: ObservableObject {
     
-    @Published var manageItems: [MenuItem]
-    
-    @Published var settingItems: [MenuItem]
-    
-    @Published var subMenuItems: [MenuItem]
-    
     @Published var discoverdDevices: [Device]
-    
-    let receiverConfig = MenuItem(name: "Pods",  image: "airpodsmax")
-    
-    let transmitterConfig = MenuItem(name: "Transimtter", image: "hifireceiver")
-    
-    let settings = MenuItem(name: "Settings", image: "gear")
     
     @Published var selectedMenuId: MenuItem.ID? {
         didSet {
             guard selectedMenuId != oldValue else {
                 return
             }
+            
             selectedDevice = nil
+            
             DeviceProvider.shared.stop()
+            
             discoverdDevices.removeAll()
-            if let selectedMenuId = selectedMenuId {
-                if selectedMenuId == transmitterConfig.id ||
-                    selectedMenuId == receiverConfig.id {
-                    DeviceProvider.shared.start()
+            
+            if let id = selectedMenuId {
+                for section in contentMenu {
+                    for menu in section.menus {
+                        if menu.id == id {
+                            selectedMenu = menu
+                        }
+                    }
+                }
+            } else {
+                selectedMenu = nil
+            }
+            
+            if let selectedMenu = selectedMenu {
+                switch selectedMenu.type {
+                case .pods, .transmitter: DeviceProvider.shared.start()
+                default: break
                 }
             }
         }
     }
     
-    let functionsMenuItems = [MenuItem(name: "Preference", image: "checklist"),
-                              MenuItem(name: "Magic Lab", image: "lasso.badge.sparkles"),
-                              MenuItem(name: "Share", image: "square.and.arrow.up")]
+    @Published var selectedMenu: MenuItem?
     
-    let banfiMenuItems = [MenuItem(name: "About BANFi", image: "exclamationmark.circle"),
-                          MenuItem(name: "Free & Premium Services", image: "dollarsign.circle")]
+    @Published var selectedDevice: Device?
     
-    @Published var selectedSettingId: MenuItem.ID? {
+    @Published var selectedSubMenuId: MenuItem.ID? {
         didSet {
-            guard selectedSettingId != oldValue else {
+            guard selectedSubMenuId != oldValue else {
                 return
+            }
+            if let id = selectedSubMenuId {
+                for menu in aboutMenuItems {
+                    if menu.id == id {
+                        selectedSubMenu = menu
+                    }
+                }
+            } else {
+                selectedSubMenu = nil
             }
         }
     }
     
-    @Published var selectedDevice: Device?
+    @Published var selectedSubMenu: MenuItem?
+    
+    var manageMenuItems: [MenuItem]
+    
+    var functionsMenuItems: [MenuItem]
+    
+    var aboutMenuItems: [MenuItem]
+    
+    var aboutSubMenuItems: [MenuItem]
+    
+    var contentMenu: [MainMenuItem]
     
     var isScanning: Bool {
         return DeviceProvider.shared.isRunning
     }
     
     init() {
-        manageItems = [receiverConfig, transmitterConfig]
-        settingItems = [settings]
-        subMenuItems = []
+        manageMenuItems = [MenuItem(type: .pods, name: "Pods", image: "airpodsmax"),
+                           MenuItem(type: .transmitter, name: "Transimtter", image: "hifireceiver")]
+        
+        functionsMenuItems = [MenuItem(type: .preference, name: "Preference", image: "checklist"),
+                              MenuItem(type: .magicLab, name: "Magic Lab", image: "lasso.badge.sparkles")]
+        
+        aboutMenuItems = [MenuItem(type: .aboutBanfi, name: "About BANFi", image: "exclamationmark.circle"),
+                          MenuItem(type: .premium, name: "Free & Premium Services", image: "dollarsign.circle")]
+        
+        aboutSubMenuItems = [MenuItem(type: .about, name: "BANFi", image: "ellipsis"),
+                             MenuItem(type: .share, name: "Share", image: "square.and.arrow.up")]
+        
+        contentMenu = [MainMenuItem(type: .manage, name: "Manage", menus: manageMenuItems),
+                       MainMenuItem(type: .funtion, name: "Function", menus: functionsMenuItems),
+                       MainMenuItem(type: .about, name: "More", menus: aboutSubMenuItems)]
+        
         discoverdDevices = []
         DeviceProvider.shared.delegate = self
-    }
-    
-    func getSelectedMenu() -> MenuItem? {
-        guard let id = selectedMenuId else {
-            return nil
-        }
-        let menus = [manageItems, settingItems, subMenuItems]
-        for menu in menus {
-            if let item = menu.first(where: { $0.id == id }) {
-                return item
-            }
-        }
-        return nil
     }
 }
 
@@ -88,14 +108,16 @@ class ManagementModel: ObservableObject {
 
 extension ManagementModel: DeviceProviderDelegate {
     func discover(device: Device) {
+        guard let selectedMenuId = selectedMenuId else { return }
+        
         switch selectedMenuId {
             
-        case transmitterConfig.id:
-            guard device.name.hasPrefix("BANFi Transmitter") else { return }
+        case manageMenuItems.first!.id:
+            guard device.name.hasPrefix("BANFi Pods") else { return }
             discoverdDevices.append(device)
             
-        case receiverConfig.id:
-            guard device.name.hasPrefix("BANFi Pods") else { return }
+        case manageMenuItems.last!.id:
+            guard device.name.hasPrefix("BANFi Transmitter") else { return }
             discoverdDevices.append(device)
             
         default: break

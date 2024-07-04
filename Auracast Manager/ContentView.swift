@@ -18,40 +18,24 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             List(selection: $dataModel.selectedMenuId) {
-                Section {
-                    ForEach(dataModel.manageItems, id: \.id) { item in
-                        HStack {
-                            Image(systemName: item.image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 30, height: 30)
-                            Text(item.name)
-                                .font(.system(size: 17, weight: .regular))
+                ForEach(dataModel.contentMenu) { cm in
+                    Section {
+                        ForEach(cm.menus, id: \.id) { item in
+                            HStack {
+                                Image(systemName: item.image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                Text(item.name)
+                                    .font(.system(size: 17, weight: .regular))
+                            }
+                            .padding(.init(top: 0, leading: 6, bottom: 4, trailing: 0))
                         }
-                        .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
+                    } header: {
+                        Text(cm.name)
+                            .font(.system(size: 12))
+                            .foregroundStyle(.secondary)
                     }
-                } header: {
-                    Text("Manage")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.secondary)
-                }
-                
-                Section {
-                    ForEach(dataModel.settingItems, id: \.id) { item in
-                        HStack {
-                            Image(systemName: item.image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 30, height: 30)
-                            Text(item.name)
-                                .font(.system(size: 17, weight: .regular))
-                        }
-                        .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
-                    }
-                } header: {
-                    Text("Setting")
-                        .font(.system(size: 12))
-                        .foregroundStyle(.secondary)
                 }
             }
             .listStyle(SidebarListStyle())
@@ -66,19 +50,18 @@ struct ContentView: View {
             }
             
         } content: {
-            if let selectedMenu = dataModel.getSelectedMenu() {
-                switch selectedMenu.id {
-                case dataModel.receiverConfig.id:
+            if let selectedMenu = dataModel.selectedMenu {
+                switch selectedMenu.type {
+                case .pods:
                     PodsMenuView(dataModel: dataModel)
                     
-                case dataModel.transmitterConfig.id:
-                    HiFiMenuView(dataModel: dataModel)
-                                        
-                case dataModel.settings.id:
-                    SettingMenuView(dataModel: dataModel)
+                case .transmitter:
+                    TransmitterMenuView(dataModel: dataModel)
+                    
+                case .about:
+                    BanfiMenuView(dataModel: dataModel)
                     
                 default:
-                    
                     Text("Unknown Constructing...")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
@@ -90,18 +73,9 @@ struct ContentView: View {
             }
             
         } detail: {
-            if let selectedMenuId = dataModel.selectedMenuId {
-                switch selectedMenuId {
-                case dataModel.transmitterConfig.id:
-                    if dataModel.selectedDevice != nil {
-                        HiFiView(device: $dataModel.selectedDevice)
-                    } else {
-                        Text("Please select an item")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-                    
-                case dataModel.receiverConfig.id:
+            if let selectedMenu = dataModel.selectedMenu {
+                switch selectedMenu.type {
+                case .pods:
                     if dataModel.selectedDevice != nil {
                         PodsView(device: $dataModel.selectedDevice)
                     } else {
@@ -110,57 +84,52 @@ struct ContentView: View {
                             .foregroundStyle(.secondary)
                     }
                     
-                case dataModel.settings.id:
-                    let idx1 = dataModel.functionsMenuItems.firstIndex(where: {dataModel.selectedSettingId == $0.id})
-                    if let idx = idx1 {
-                        switch idx {
-                        case 0:
-                            Text("Preference Constructing...")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                            
-                        case 1:
-                            Text("Magic Lab Constructing...")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                            
-                        case 2:
-                            Text("Share Constructing...")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                            
-                        case 3:
-                            Text("About Constructing...")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                            
-                        default:
-                            Text("Unknown Constructing...")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                    let idx2 = dataModel.banfiMenuItems.firstIndex(where: {dataModel.selectedSettingId == $0.id})
-                    if let idx = idx2 {
-                        switch idx {
-                        case 0:
-                            BanfiPartnersView()
-                            
-                        case 1:
-                            BanfiFreePremiumServiceView()
-                            
-                        default:
-                            Text("Unknown Constructing...")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                        }
+                case .transmitter:
+                    if dataModel.selectedDevice != nil {
+                        HiFiView(device: $dataModel.selectedDevice)
+                    } else {
+                        Text("Please select an item")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
                     }
                     
-                default:
-                    Text("Constructing...")
+                case .preference:
+                    Text("Preference Constructing...")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
+                    
+                case .magicLab:
+                    Text("Magic LAB Constructing...")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                    
+                case .share:
+                    Text("Share Constructing...")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+
+                default:
+                    if let selectedSubMenu = dataModel.selectedSubMenu {
+                        switch selectedSubMenu.type {
+                        case .aboutBanfi:
+                            BanfiPartnersView()
+                        case .premium:
+                            BanfiFreePremiumServiceView()
+                        default:
+                            Text("Unknown Constructing...")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                    } else {
+                        Text("Please select an item")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
                 }
+            } else {
+                Text("Please select an item")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
             }
         }
     }

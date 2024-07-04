@@ -1,5 +1,5 @@
 //
-//  HiFiMenuView.swift
+//  TransmitterMenuView.swift
 //  Auracast Manager
 //
 //  Created by Jason on 2024/7/3.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HiFiMenuView: View {
+struct TransmitterMenuView: View {
     @ObservedObject var dataModel: ManagementModel
 
 
@@ -38,5 +38,5 @@ struct HiFiMenuView: View {
 }
 
 #Preview {
-    HiFiMenuView(dataModel: ManagementModel())
+    TransmitterMenuView(dataModel: ManagementModel())
 }

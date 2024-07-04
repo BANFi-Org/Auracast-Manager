@@ -25,7 +25,7 @@
 		96F29CCE2C34247E0002A22D /* PremiumServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CCD2C34247E0002A22D /* PremiumServiceView.swift */; };
 		96F29CD02C345DEF0002A22D /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CCF2C345DEF0002A22D /* KeyboardResponder.swift */; };
 		96F29CD22C34E62E0002A22D /* PodsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CD12C34E62E0002A22D /* PodsMenuView.swift */; };
-		96F29CD42C34E6390002A22D /* HiFiMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CD32C34E6390002A22D /* HiFiMenuView.swift */; };
+		96F29CD42C34E6390002A22D /* TransmitterMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CD32C34E6390002A22D /* TransmitterMenuView.swift */; };
 		96F29CD62C34E6480002A22D /* SettingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CD52C34E6480002A22D /* SettingMenuView.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,7 @@
 		96F29CCD2C34247E0002A22D /* PremiumServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumServiceView.swift; sourceTree = "<group>"; };
 		96F29CCF2C345DEF0002A22D /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		96F29CD12C34E62E0002A22D /* PodsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodsMenuView.swift; sourceTree = "<group>"; };
-		96F29CD32C34E6390002A22D /* HiFiMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiFiMenuView.swift; sourceTree = "<group>"; };
+		96F29CD32C34E6390002A22D /* TransmitterMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterMenuView.swift; sourceTree = "<group>"; };
 		96F29CD52C34E6480002A22D /* SettingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +127,7 @@
 				963C0F002BC64A9D00B685E2 /* Model */,
 				96B418AE2BC51D6C005A2844 /* View */,
 				96F29CD12C34E62E0002A22D /* PodsMenuView.swift */,
-				96F29CD32C34E6390002A22D /* HiFiMenuView.swift */,
+				96F29CD32C34E6390002A22D /* TransmitterMenuView.swift */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -249,7 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96F29CD42C34E6390002A22D /* HiFiMenuView.swift in Sources */,
+				96F29CD42C34E6390002A22D /* TransmitterMenuView.swift in Sources */,
 				96F29CC72C3403480002A22D /* BanfiFreePremiumServiceView.swift in Sources */,
 				96B418B22BC523E6005A2844 /* HiFiView.swift in Sources */,
 				96F29CCE2C34247E0002A22D /* PremiumServiceView.swift in Sources */,
@@ -398,7 +398,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Auracast Manager/Preview Content\"";
 				DEVELOPMENT_TEAM = DTD7729B7S;
 				ENABLE_PREVIEWS = YES;
@@ -429,7 +429,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"Auracast Manager/Preview Content\"";
 				DEVELOPMENT_TEAM = DTD7729B7S;
 				ENABLE_PREVIEWS = YES;
