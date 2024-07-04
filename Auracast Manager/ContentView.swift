@@ -26,7 +26,7 @@ struct ContentView: View {
                                 .scaledToFit()
                                 .frame(width: 30, height: 30)
                             Text(item.name)
-                                .font(.system(size: 17, weight: .bold))
+                                .font(.system(size: 17, weight: .regular))
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
                     }
@@ -44,7 +44,7 @@ struct ContentView: View {
                                 .scaledToFit()
                                 .frame(width: 30, height: 30)
                             Text(item.name)
-                                .font(.system(size: 17, weight: .bold))
+                                .font(.system(size: 17, weight: .regular))
                         }
                         .padding(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
                     }
