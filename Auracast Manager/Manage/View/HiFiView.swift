@@ -51,7 +51,7 @@ struct HiFiView: View {
             .animation(.linear, value: isConnected)
             .padding()
             .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
                     self.isConnected = true
                 }
             }
@@ -192,7 +192,7 @@ struct HiFiView: View {
             }
             .onChange(of: device) {
                 reset()
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
                     self.isConnected = true
                 }
             }

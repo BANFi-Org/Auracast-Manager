@@ -93,14 +93,14 @@ struct BroadcastGroupView: View {
             }
             .padding()
             .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
                     self.isConnected = true
                 }
             }
         }
         .onChange(of: device) {
             reset()
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
                 self.isConnected = true
             }
         }

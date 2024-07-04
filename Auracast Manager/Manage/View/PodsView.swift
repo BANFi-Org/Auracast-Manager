@@ -58,7 +58,7 @@ struct PodsView: View {
             .scaleEffect(!isConnected ? 1.0 : 0.0)
             .animation(.linear, value: isConnected)
             .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
                     self.isConnected = true
                     self.streamScanner.start()
                 }
@@ -276,7 +276,7 @@ struct PodsView: View {
             }
             .onChange(of: device) {
                 reset()
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
                     self.isConnected = true
                     self.streamScanner.start()
                 }
