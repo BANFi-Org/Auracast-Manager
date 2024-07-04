@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		963C0F022BC64AB200B685E2 /* DeviceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963C0F012BC64AB200B685E2 /* DeviceProvider.swift */; };
 		963C0F042BC64B4E00B685E2 /* StreamScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963C0F032BC64B4E00B685E2 /* StreamScanner.swift */; };
+		965914702C363681007D6943 /* BanfiMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9659146F2C363681007D6943 /* BanfiMenuView.swift */; };
 		965C67972BC3E37900E7D8FA /* Auracast_ManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965C67962BC3E37900E7D8FA /* Auracast_ManagerApp.swift */; };
 		965C67992BC3E37900E7D8FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965C67982BC3E37900E7D8FA /* ContentView.swift */; };
 		965C679B2BC3E37A00E7D8FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965C679A2BC3E37A00E7D8FA /* Assets.xcassets */; };
@@ -26,12 +27,12 @@
 		96F29CD02C345DEF0002A22D /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CCF2C345DEF0002A22D /* KeyboardResponder.swift */; };
 		96F29CD22C34E62E0002A22D /* PodsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CD12C34E62E0002A22D /* PodsMenuView.swift */; };
 		96F29CD42C34E6390002A22D /* TransmitterMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CD32C34E6390002A22D /* TransmitterMenuView.swift */; };
-		96F29CD62C34E6480002A22D /* SettingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F29CD52C34E6480002A22D /* SettingMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		963C0F012BC64AB200B685E2 /* DeviceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceProvider.swift; sourceTree = "<group>"; };
 		963C0F032BC64B4E00B685E2 /* StreamScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamScanner.swift; sourceTree = "<group>"; };
+		9659146F2C363681007D6943 /* BanfiMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BanfiMenuView.swift; sourceTree = "<group>"; };
 		965C67932BC3E37900E7D8FA /* Auracast Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auracast Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		965C67962BC3E37900E7D8FA /* Auracast_ManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auracast_ManagerApp.swift; sourceTree = "<group>"; };
 		965C67982BC3E37900E7D8FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		96F29CCF2C345DEF0002A22D /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		96F29CD12C34E62E0002A22D /* PodsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodsMenuView.swift; sourceTree = "<group>"; };
 		96F29CD32C34E6390002A22D /* TransmitterMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterMenuView.swift; sourceTree = "<group>"; };
-		96F29CD52C34E6480002A22D /* SettingMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				96F29CC12C33F6FC0002A22D /* Model */,
-				96F29CC02C33F6E80002A22D /* Setting */,
+				96F29CC02C33F6E80002A22D /* Banfi */,
 				96F29CBF2C33F6DB0002A22D /* Manage */,
 				965C67962BC3E37900E7D8FA /* Auracast_ManagerApp.swift */,
 				965C67982BC3E37900E7D8FA /* ContentView.swift */,
@@ -132,14 +132,14 @@
 			path = Manage;
 			sourceTree = "<group>";
 		};
-		96F29CC02C33F6E80002A22D /* Setting */ = {
+		96F29CC02C33F6E80002A22D /* Banfi */ = {
 			isa = PBXGroup;
 			children = (
 				96F29CC22C33F73D0002A22D /* Model */,
 				96F29CC32C33F74B0002A22D /* View */,
-				96F29CD52C34E6480002A22D /* SettingMenuView.swift */,
+				9659146F2C363681007D6943 /* BanfiMenuView.swift */,
 			);
-			path = Setting;
+			path = Banfi;
 			sourceTree = "<group>";
 		};
 		96F29CC12C33F6FC0002A22D /* Model */ = {
@@ -265,8 +265,8 @@
 				96B418B02BC51D9A005A2844 /* BroadcastGroupView.swift in Sources */,
 				96F29CCA2C34214E0002A22D /* FreeServiceView.swift in Sources */,
 				96F29CCC2C3421970002A22D /* ProjectBaseServiceView.swift in Sources */,
-				96F29CD62C34E6480002A22D /* SettingMenuView.swift in Sources */,
 				965C67972BC3E37900E7D8FA /* Auracast_ManagerApp.swift in Sources */,
+				965914702C363681007D6943 /* BanfiMenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
