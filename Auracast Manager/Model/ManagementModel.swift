@@ -42,10 +42,10 @@ class ManagementModel: ObservableObject {
     }
     
     let functionsMenuItems = [MenuItem(name: "Preference", image: "checklist"),
-                              MenuItem(name: "Magic Lab",  image: "lasso.badge.sparkles"),
-                              MenuItem(name: "Share",      image: "square.and.arrow.up")]
+                              MenuItem(name: "Magic Lab", image: "lasso.badge.sparkles"),
+                              MenuItem(name: "Share", image: "square.and.arrow.up")]
     
-    let banfiMenuItems = [MenuItem(name: "BANFi & Partners",        image: "exclamationmark.circle"),
+    let banfiMenuItems = [MenuItem(name: "About BANFi", image: "exclamationmark.circle"),
                           MenuItem(name: "Free & Premium Services", image: "dollarsign.circle")]
     
     @Published var selectedSettingId: MenuItem.ID? {
