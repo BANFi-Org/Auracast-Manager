@@ -87,17 +87,17 @@ class ManagementModel: ObservableObject {
                            MenuItem(type: .transmitter, name: "Transimtter", image: "hifireceiver")]
         
         functionsMenuItems = [MenuItem(type: .preference, name: "Preference", image: "checklist"),
-                              MenuItem(type: .magicLab, name: "Magic Lab", image: "lasso.badge.sparkles")]
+                              MenuItem(type: .magicLab, name: "Magic Lab", image: "lasso.badge.sparkles"),
+                              MenuItem(type: .share, name: "Share", image: "square.and.arrow.up")]
         
-        aboutMenuItems = [MenuItem(type: .aboutBanfi, name: "About BANFi", image: "exclamationmark.circle"),
+        aboutMenuItems = [MenuItem(type: .aboutBanfi, name: "BANFi Semiconductor", image: "exclamationmark.circle"),
                           MenuItem(type: .premium, name: "Free & Premium Services", image: "dollarsign.circle")]
         
-        aboutSubMenuItems = [MenuItem(type: .about, name: "BANFi", image: "ellipsis"),
-                             MenuItem(type: .share, name: "Share", image: "square.and.arrow.up")]
+        aboutSubMenuItems = [MenuItem(type: .about, name: "BANFi", image: "rectangle.stack")]
         
         contentMenu = [MainMenuItem(type: .manage, name: "Manage", menus: manageMenuItems),
-                       MainMenuItem(type: .funtion, name: "Function", menus: functionsMenuItems),
-                       MainMenuItem(type: .about, name: "More", menus: aboutSubMenuItems)]
+                       MainMenuItem(type: .about, name: "About", menus: aboutSubMenuItems),
+                       MainMenuItem(type: .funtion, name: "Function", menus: functionsMenuItems)]
         
         discoverdDevices = []
         DeviceProvider.shared.delegate = self
