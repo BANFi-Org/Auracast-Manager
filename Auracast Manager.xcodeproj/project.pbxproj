@@ -135,7 +135,6 @@
 		96F29CC02C33F6E80002A22D /* Banfi */ = {
 			isa = PBXGroup;
 			children = (
-				96F29CC22C33F73D0002A22D /* Model */,
 				96F29CC32C33F74B0002A22D /* View */,
 				9659146F2C363681007D6943 /* BanfiMenuView.swift */,
 			);
@@ -148,13 +147,6 @@
 				96B418AC2BC4EB8E005A2844 /* ManagementModel.swift */,
 				96B418AA2BC4EB74005A2844 /* MenuItem.swift */,
 				96F29CCF2C345DEF0002A22D /* KeyboardResponder.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		96F29CC22C33F73D0002A22D /* Model */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -398,7 +390,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Auracast Manager/Preview Content\"";
 				DEVELOPMENT_TEAM = D38GT9XD66;
 				ENABLE_PREVIEWS = YES;
@@ -429,7 +421,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Auracast Manager/Preview Content\"";
 				DEVELOPMENT_TEAM = D38GT9XD66;
 				ENABLE_PREVIEWS = YES;
